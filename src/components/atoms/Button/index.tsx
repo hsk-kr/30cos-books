@@ -19,6 +19,12 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
 
 export const Button = styled.button<ButtonProps>`
   border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.25s;
+
+  &:not(:disabled):hover {
+    opacity: 0.6;
+  }
 
   ${({ theme, size = 'md' }) => {
     if (size === 'sm') {
