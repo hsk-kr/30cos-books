@@ -1,14 +1,18 @@
 import { render, screen } from '@testing-library/react';
-import { Default, Secondary, Outlined, SmallSize } from './Button.stories';
+import {
+  Default,
+  Secondary,
+  Outlined,
+  SmallSize,
+  Width,
+} from './Button.stories';
 import { defaultTheme as theme } from '../../../styles/theme';
 import { mountWithTheme } from '../../../jest';
 
 test('should have default css styles', () => {
   render(mountWithTheme(<Default {...Default.args} />));
 
-  const button = screen.getByRole('button');
-
-  expect(button).toHaveStyle(`
+  expect(screen.getByRole('button')).toHaveStyle(`
     background-color: ${theme.colors.primary.main};
     color: ${theme.colors.primary.contrast};
     padding: 12px 28px;
@@ -41,5 +45,15 @@ test('should change font and padding depending on size prop', () => {
   expect(screen.getByRole('button')).toHaveStyle(`
     ${theme.font.captionMedium}
     padding: 5px 10px;
+  `);
+});
+
+test('should padding-left, padding-right are zero and set width', () => {
+  render(mountWithTheme(<Width {...Width.args} />));
+
+  expect(screen.getByRole('button')).toHaveStyle(`
+    width: 110px;
+    padding-left: 0px;
+    padding-right: 0px;
   `);
 });

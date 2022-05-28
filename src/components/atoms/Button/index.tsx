@@ -7,13 +7,17 @@ export type ColorType = 'primary' | 'secondary' | 'tertiary';
 
 export type SizeType = 'sm' | 'md';
 
-interface IButton extends React.ComponentPropsWithoutRef<'button'> {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   variant?: VariantType;
   color?: ColorType;
   size?: SizeType;
+  /**
+   * If you set width, default styles padding-left, padding-right would be ignored
+   */
+  width?: 'string' | number;
 }
 
-export const Button = styled.button<IButton>`
+export const Button = styled.button<ButtonProps>`
   border-radius: 8px;
 
   ${({ theme, size = 'md' }) => {
@@ -29,6 +33,17 @@ export const Button = styled.button<IButton>`
         `;
     }
   }}
+
+  ${({ width }) =>
+    width &&
+    `
+    padding-left: 0px;
+    padding-right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: ${typeof width === 'string' ? width : `${width}px`};
+  `}
 
   ${({ theme, variant = 'contained', color = 'primary' }) => {
     if (variant === 'contained') {

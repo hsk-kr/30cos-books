@@ -18,6 +18,7 @@ export default {
     variant: 'contained',
     color: 'primary',
     children: 'Button',
+    width: undefined,
   },
 } as ComponentMeta<typeof Button>;
 
@@ -41,4 +42,10 @@ export const SmallSize = Template.bind({});
 
 SmallSize.args = {
   size: 'sm',
+};
+
+export const Width = Template.bind({});
+
+Width.args = {
+  width: 110,
 };
