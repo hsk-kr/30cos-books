@@ -4,6 +4,13 @@ A books search Page.
 
 **It will be updated**
 
+## Preview
+
+[Storybook](https://hsk-kr.github.io/30cos-books/)
+
+*made using https://github.com/storybookjs/storybook-deployer*
+
+
 ## Skills
 
 - React, typescript (CRA) 
