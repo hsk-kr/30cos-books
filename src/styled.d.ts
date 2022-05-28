@@ -10,7 +10,10 @@ declare module 'styled-components' {
       bodyRegular: string;
       bodyMedium: string;
       captionMedium: string;
+      tinyMedium: string;
       h3: string;
+      h4: string;
+      p: string;
     };
     colors: {
       common: {

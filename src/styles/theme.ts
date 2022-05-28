@@ -17,11 +17,29 @@ export const defaultTheme: DefaultTheme = {
       font-size: 14px;
       line-height: 22px;
     `,
+    tinyMedium: `
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 22px;
+    `,
     h3: `
       font-style: normal;
       font-weight: 700;
       font-size: 18px;
       line-height: 26px;`,
+    h4: `
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 26px;
+    `,
+    p: `
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 16px;
+    `,
   },
   colors: {
     common: {
