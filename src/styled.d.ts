@@ -7,8 +7,10 @@ interface IPalette {
 declare module 'styled-components' {
   export interface DefaultTheme {
     font: {
+      bodyRegular: string;
       bodyMedium: string;
       captionMedium: string;
+      h3: string;
     };
     colors: {
       common: {

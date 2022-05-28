@@ -2,14 +2,26 @@ import { DefaultTheme } from 'styled-components';
 
 export const defaultTheme: DefaultTheme = {
   font: {
+    bodyRegular: `
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    `,
     bodyMedium: `
+      font-weight: 500;
       font-size: 16px;
       line-height: 24px;
     `,
     captionMedium: `
+      font-weight: 500;
       font-size: 14px;
       line-height: 22px;
     `,
+    h3: `
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 26px;`,
   },
   colors: {
     common: {
