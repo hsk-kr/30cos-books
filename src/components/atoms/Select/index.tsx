@@ -1,8 +1,8 @@
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import styled from 'styled-components';
 import DownArrow from '../../../res/down_arrow.svg';
 
-interface Item {
+export interface Item {
   visible?: boolean;
   value?: string;
 }
@@ -37,9 +37,22 @@ export const Select = ({
     ));
   }, [items, onChange]);
 
-  const handleToggle = () => {
+  const handleToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setDropdownVisible(!dropdownVisible);
   };
+
+  useEffect(() => {
+    const closeDropdown = () => {
+      setDropdownVisible(false);
+    };
+
+    window.addEventListener('click', closeDropdown);
+
+    return () => {
+      window.removeEventListener('click', closeDropdown);
+    };
+  }, []);
 
   return (
     <Wrapper role="combobox" onClick={handleToggle} width={width}>
@@ -89,7 +102,8 @@ const Icon = styled.img`
 `;
 
 const Dropdown = styled.ul`
-  backround-color: white;
+  z-index: 1;
+  background-color: white;
   position: absolute;
   left: 0px;
   right: 0px;
