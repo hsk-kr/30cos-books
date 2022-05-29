@@ -62,6 +62,7 @@ const fetchNaverBooks = async (
     await naverApi.get<BookAPIResponse>(url, {
       params: {
         ...params,
+
         start,
         page: undefined,
       },
@@ -74,6 +75,7 @@ const fetchNaverBooks = async (
   data.items = data.items.map((item) => ({
     ...item,
     title: removeUnnecessaryText(item.title),
+    author: removeUnnecessaryText(item.author),
     description: removeUnnecessaryText(item.description),
   }));
 
