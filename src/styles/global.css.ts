@@ -23,8 +23,13 @@ export default createGlobalStyle`
   }
 
   button, h1, h2, h3, h4, h5, h6, 
-  p, span, label, div, input {
+  p, span, label, div, input, ul, li {
     font-family: 'Noto Sans KR', sans-serif;
     margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style-type: none;
   }
 `;
