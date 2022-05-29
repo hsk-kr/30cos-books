@@ -18,7 +18,7 @@ export const BookSearchResultList = ({
     );
   }, [items]);
 
-  return <List>{bookElements}</List>;
+  return <List data-testid="bookSearchResult">{bookElements}</List>;
 };
 
 const List = styled.div`

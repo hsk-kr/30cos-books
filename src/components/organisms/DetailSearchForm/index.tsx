@@ -47,7 +47,7 @@ export const DetailSearchForm = ({
   }, [items, options]);
 
   return (
-    <Form>
+    <Form data-testid="detailSearchForm">
       <CloseButton alt="close" src={CloseIcon} onClick={onClose} />
       <Flex direction="column" rowGap={8}>
         {optionElements}
@@ -96,7 +96,12 @@ const SearchOption = ({
         onChange={onTypeChange}
         data-testid="select"
       />
-      <TextField value={value} onChange={onChange} placeholder="검색어 입력" />
+      <TextField
+        value={value}
+        onChange={onChange}
+        data-testid="searchOptionInput"
+        placeholder="검색어 입력"
+      />
       {removeDisabled ? (
         <EmptyButtonSpace data-testid="removeButton" />
       ) : (

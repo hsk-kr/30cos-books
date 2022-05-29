@@ -1,5 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { SearchPageTemplate } from '../templates/SearchPageTemplate';
+import { SearchResultCountLabel } from '../molecules/SearchResultCountLabel';
+import { Pagination } from '../molecules/Pagination';
+import { MessageWithBookIcon } from '../molecules/MessageWithBookIcon';
 import {
   BookSearchResultList,
   BookCardProps,
@@ -12,8 +15,6 @@ import {
   AUTHOR,
   PUBLISHER,
 } from '../organisms/DetailSearchForm';
-import { SearchResultCountLabel } from '../molecules/SearchResultCountLabel';
-import { Pagination } from '../molecules/Pagination';
 import { useBooks, DetailSearchParams } from '../../hooks/useBooks';
 import { usePagination } from '../../hooks/usePagination';
 
@@ -180,7 +181,11 @@ export const SearchPage = () => {
         <SearchResultCountLabel label="도서 검색 결과" total={total} />
       }
       searchResultContent={
-        !bookList.length ? null : <BookSearchResultList items={bookList} />
+        !bookList.length ? (
+          <MessageWithBookIcon message="검색된 결과가 없습니다" mt={64} />
+        ) : (
+          <BookSearchResultList items={bookList} />
+        )
       }
       pagination={
         !bookList.length ? null : (

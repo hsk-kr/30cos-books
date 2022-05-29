@@ -5,16 +5,32 @@ import BookIcon from '../../../res/book_icon.svg';
 
 interface MessageWithBookIconProps {
   message?: string;
+  mt?: number;
 }
 
-export const MessageWithBookIcon = ({ message }: MessageWithBookIconProps) => {
+export const MessageWithBookIcon = ({
+  message,
+  mt,
+}: MessageWithBookIconProps) => {
   return (
-    <Flex direction="column" alignItems="center" rowGap={24}>
+    <Container
+      direction="column"
+      alignItems="center"
+      rowGap={24}
+      mt={mt}
+      data-testid="messageWithBookIcon"
+    >
       <img alt="book icon" src={BookIcon} />
       <Text>{message}</Text>
-    </Flex>
+    </Container>
   );
 };
+
+const Container = styled(Flex)<{
+  mt?: number;
+}>`
+  ${({ mt }) => mt && `margin-top: ${mt}px;`}
+`;
 
 const Text = styled.span`
   ${({ theme }) => `
