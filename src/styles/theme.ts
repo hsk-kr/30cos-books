@@ -23,6 +23,12 @@ export const defaultTheme: DefaultTheme = {
       font-size: 10px;
       line-height: 22px;
     `,
+    h2: `
+      font-style: normal;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 32px;
+    `,
     h3: `
       font-style: normal;
       font-weight: 700;

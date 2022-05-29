@@ -25,9 +25,6 @@ export default createGlobalStyle`
   button, h1, h2, h3, h4, h5, h6, 
   p, span, label, div, input {
     font-family: 'Noto Sans KR', sans-serif;
-  }
-
-  p {
     margin: 0;
   }
 `;
