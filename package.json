@@ -10,8 +10,10 @@
     "@types/node": "^16.11.36",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
+    "axios": "^0.27.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-query": "^3.39.0",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.5",
     "typescript": "^4.7.2",
@@ -27,6 +29,7 @@
     "storybook:deploy": "npx -p @storybook/storybook-deployer storybook-to-ghpages",
     "build-storybook": "build-storybook -s public"
   },
+  "proxy": "https://openapi.naver.com/",
   "resolutions": {
     "styled-components": "^5"
   },

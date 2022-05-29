@@ -46,18 +46,14 @@ export const Pagination = ({
   return (
     <Flex columnGap={8}>
       {prevActive && (
-        <Page data-testid="previousButton">
-          <img
-            alt="move to previous page"
-            src={LeftArrowIcon}
-            onClick={onPrev}
-          />
+        <Page data-testid="previousButton" onClick={onPrev}>
+          <img alt="move to previous page" src={LeftArrowIcon} />
         </Page>
       )}
       {pageElements}
       {nextActive && (
-        <NextPage data-testid="nextButton">
-          <img alt="move to next page" src={LeftArrowIcon} onClick={onNext} />
+        <NextPage data-testid="nextButton" onClick={onNext}>
+          <img alt="move to next page" src={LeftArrowIcon} />
         </NextPage>
       )}
     </Flex>

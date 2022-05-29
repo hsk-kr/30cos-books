@@ -1,10 +1,15 @@
-import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { SearchPage } from './components/pages/SearchPage';
+
+const queryClient = new QueryClient({});
 
 function App() {
   return (
-    <div>
-      <p>App</p>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <SearchPage />
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 

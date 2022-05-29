@@ -3,7 +3,7 @@ import { Button } from '../../atoms/Button';
 import { Flex } from '../../atoms/Flex';
 import { AccordionButton } from '../../molecules/AccordionButton';
 
-interface BookCardProps {
+export interface BookCardProps {
   image?: string;
   title?: string;
   author?: string;
@@ -39,9 +39,7 @@ export const BookCard = ({
         {!folded && (
           <BookDescriptionWrapper direction="column">
             <DescriptionIntro>책소개</DescriptionIntro>
-            <Description data-testid="description">
-              {description?.replace(/<\/?[^>]+(>|$)/g, '')}
-            </Description>
+            <Description data-testid="description">{description}</Description>
           </BookDescriptionWrapper>
         )}
       </SecondPart>
@@ -93,7 +91,7 @@ export const BookCard = ({
   );
 };
 
-export const BookCardWrapper = styled.div<{
+const BookCardWrapper = styled.div<{
   folded: boolean;
 }>`
   transition: all 0.25s;
@@ -131,7 +129,7 @@ const Title = styled.span`
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  width: 100%;
+  max-width: 100%;
 `;
 
 const Description = styled.p`
