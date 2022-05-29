@@ -67,7 +67,6 @@ const DetailSearchForm = styled.div`
   left: 50%;
   transform: translateX(-50%);
   top: 110%;
-  pointer-events: none;
   opacity: 1;
 `;
 

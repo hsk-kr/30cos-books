@@ -30,7 +30,7 @@ export const Select = ({
       <DropdownItem
         key={item.value}
         visible={item.visible || false}
-        onChange={() => onChange && onChange(itemIdx)}
+        onClick={() => onChange && onChange(itemIdx)}
       >
         {item.value}
       </DropdownItem>

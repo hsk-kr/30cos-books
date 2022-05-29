@@ -5,16 +5,32 @@ import {
   BookCardProps,
 } from '../organisms/BookSearchResultList';
 import { SearchField } from '../organisms/SearchField';
+import {
+  DetailSearchForm,
+  useDetailSearchForm,
+  TITLE,
+  AUTHOR,
+  PUBLISHER,
+} from '../organisms/DetailSearchForm';
 import { SearchResultCountLabel } from '../molecules/SearchResultCountLabel';
 import { Pagination } from '../molecules/Pagination';
-import { useBooks } from '../../hooks/useBooks';
+import { useBooks, DetailSearchParams } from '../../hooks/useBooks';
 import { usePagination } from '../../hooks/usePagination';
 
 export const SearchPage = () => {
+  const [detailSearchFormVisible, setDetailSearchFormVisible] = useState(false);
   const [total, setTotal] = useState(0);
   const [books, setBooks] = useState<BookCardProps[]>([]);
   const [searchWord, setSearchWord] = useState('');
   const [selectedBookIndex, setSelectedBookIndex] = useState(-1);
+
+  const {
+    searchOptionDropdownList,
+    searchOptions,
+    addDisabled: searchOptionAddDisabled,
+    handleReset,
+    handleSearchOptionAdd,
+  } = useDetailSearchForm();
 
   const {
     page,
@@ -37,6 +53,42 @@ export const SearchPage = () => {
 
   const handleSearchWord = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(e.target.value);
+  };
+
+  const toggleDetailForm = () => {
+    setDetailSearchFormVisible((visible) => !visible);
+  };
+
+  const handleDetailSearch = () => {
+    const params: DetailSearchParams = {
+      page: 1,
+    };
+
+    // make books api params
+    for (const option of searchOptions) {
+      const value = option.value?.trim();
+      if (!value?.length) continue;
+
+      switch (option.selectedItemIndex) {
+        case TITLE:
+          params.d_titl = value;
+          break;
+        case AUTHOR:
+          params.d_auth = value;
+          break;
+        case PUBLISHER:
+          params.d_publ = value;
+          break;
+      }
+    }
+
+    // if use doesn't enter any input values
+    if (Object.keys(params).length < 2) {
+      alert('검색어를 입력해주세요.');
+      return;
+    }
+
+    fetchBooks(params);
   };
 
   // fetch when click the search button
@@ -108,6 +160,20 @@ export const SearchPage = () => {
           value={searchWord}
           onChange={handleSearchWord}
           onSearch={handleSearch}
+          onDetailSearch={toggleDetailForm}
+          detailSearchForm={
+            detailSearchFormVisible && (
+              <DetailSearchForm
+                addDisabled={searchOptionAddDisabled}
+                items={searchOptionDropdownList}
+                options={searchOptions}
+                onClose={toggleDetailForm}
+                onReset={handleReset}
+                onSearch={handleDetailSearch}
+                onSearchOptionAdd={handleSearchOptionAdd}
+              />
+            )
+          }
         />
       }
       searchResultText={

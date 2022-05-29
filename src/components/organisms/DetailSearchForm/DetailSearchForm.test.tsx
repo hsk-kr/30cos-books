@@ -30,7 +30,7 @@ test('should fire click events correctly', () => {
         onSearch={() => {
           search = true;
         }}
-        onAddSearchOption={() => {
+        onSearchOptionAdd={() => {
           addOption = true;
         }}
         options={

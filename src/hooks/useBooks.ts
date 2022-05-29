@@ -7,10 +7,10 @@ interface AllSearchParams {
   page: number;
 }
 
-interface DetailSearchParams {
-  title?: string;
-  author?: string;
-  publisher?: string;
+export interface DetailSearchParams {
+  d_titl?: string;
+  d_auth?: string;
+  d_publ?: string;
   page: number;
 }
 
@@ -35,17 +35,35 @@ interface BookAPIResponse {
 
 const DISPLAY_CNT = 10;
 
+const SEARCH_ALL_URL = 'v1/search/book.json';
+const SEARCH_DETAIL_URL = 'v1/search/book_adv';
+
+const isAllSearchParams = (
+  params?: AllSearchParams | DetailSearchParams
+): params is AllSearchParams => {
+  return 'query' in (params || {});
+};
+
 const fetchNaverBooks = async (
   params?: AllSearchParams | DetailSearchParams
 ) => {
   const page = params?.page || 1;
   const start = (page - 1) * DISPLAY_CNT + 1;
 
+  // change url depending on parameters
+  let url = '';
+  if (isAllSearchParams(params)) {
+    url = SEARCH_ALL_URL;
+  } else {
+    url = SEARCH_DETAIL_URL;
+  }
+
   const data = (
-    await naverApi.get<BookAPIResponse>('v1/search/book.json', {
+    await naverApi.get<BookAPIResponse>(url, {
       params: {
         ...params,
         start,
+        page: undefined,
       },
     })
   ).data;
@@ -118,16 +136,16 @@ export const useBooks = () => {
 const makeCacheKey = (params: AllSearchParams | DetailSearchParams) => {
   let key = ['naver-books'];
 
-  if ('query' in params) {
+  if (isAllSearchParams(params)) {
     // 전체검색
     key = [...key, params.query, params.page.toString()];
   } else {
     // 상세검색
     key = [
       ...key,
-      params.title || 'all',
-      params.author || 'all',
-      params.publisher || 'all',
+      params.d_titl || 'all',
+      params.d_auth || 'all',
+      params.d_publ || 'all',
       params.page.toString(),
     ];
   }
