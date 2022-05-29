@@ -45,16 +45,16 @@ npm run test
 
 ### Run E2E Test
 
-Before running the command, ensure the localserver is running on http://localhost:3000
+Before running the command, ensure the local dev server is running on port 3000
 
 ```properties
 npm run test:e2e
 ```
 
-or if you don't start the server
+Or if you didn't start the server, you can start the dev server and run e2e test in one command
 
 ```properties
-npm run start & npm run test:e2e
+npm run test:e2e-dev
 ```
 
 ### Run Test with coverage
