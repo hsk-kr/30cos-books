@@ -43,6 +43,20 @@ docker-compose up
 npm run test
 ```
 
+### Run E2E Test
+
+Before running the command, ensure the localserver is running on http://localhost:3000
+
+```properties
+npm run test:e2e
+```
+
+or if you don't start the server
+
+```properties
+npm run start & npm run test:e2e
+```
+
 ### Run Test with coverage
 ```properties
 npm run test:coverage
