@@ -2,13 +2,11 @@
 
 A books search Page.
 
-**It will be updated**
-
 ## Preview
 
-[Storybook](https://hsk-kr.github.io/30cos-books/)
+*storybook has been deployed using https://github.com/storybookjs/storybook-deployer*
 
-*made using https://github.com/storybookjs/storybook-deployer*
+* Storybook: [GO!](https://hsk-kr.github.io/30cos-books/)
 
 
 ## Skills
@@ -19,9 +17,25 @@ A books search Page.
 
 ## Scripts
 
+### Environments Variables
+
+API Provider: https://developers.naver.com/
+
+you have to set these variables before running the app.
+
+```properties
+REACT_APP_X_Naver_Client_Id=[Enter your client id]
+REACT_APP_X_Naver_Client_Secret=[Enter your client secret]
+```
+
 ### Run Dev
 ```properties
 npm run start
+```
+
+### Run Dev with docker-compose
+```properties
+docker-compose up
 ```
 
 ### Run Test
