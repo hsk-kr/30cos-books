@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../../atoms/Button';
+import { Flex } from '../../atoms/Flex';
 import { AccordionButton } from '../../molecules/AccordionButton';
 
 interface BookCardProps {
@@ -156,37 +157,6 @@ const PriceLabel = styled.span`
     ${theme.font.tinyMedium}
     color: ${theme.colors.text.caption};
   `}
-`;
-
-const Flex = styled.div<{
-  flex?: number;
-  direction?: 'column' | 'row';
-  columnGap?: number;
-  rowGap?: number;
-  mb?: number;
-  alignItems?: 'flex-start' | 'center' | 'flex-end';
-  justifyContent?: 'flex-start' | 'center' | 'flex-end';
-}>`
-  display: flex;
-  ${({
-    flex,
-    columnGap,
-    direction,
-    rowGap,
-    mb,
-    alignItems,
-    justifyContent,
-  }) => {
-    return `
-      ${flex ? `flex: ${flex};` : ''}
-      ${columnGap ? `column-gap: ${columnGap}px;` : ''}
-      ${rowGap ? `row-gap: ${rowGap}px;` : ''}
-      ${direction ? `flex-direction: ${direction};` : ''}
-      ${mb ? `margin-bottom: ${mb}px;` : ''}
-      ${alignItems ? `align-items: ${alignItems};` : ''}
-      ${justifyContent ? `justify-content: ${justifyContent};` : ''}
-    `;
-  }}
 `;
 
 const BookDescriptionWrapper = styled(Flex)`

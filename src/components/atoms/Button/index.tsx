@@ -17,7 +17,9 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   width?: 'string' | number;
 }
 
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.button.attrs((props) => ({
+  type: props.type || 'button',
+}))<ButtonProps>`
   border-radius: 8px;
   cursor: pointer;
   transition: opacity 0.25s;

@@ -1,7 +1,6 @@
-import { getByRole, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Open, FoldExample, Folded } from './BookCard.stories';
-import { defaultTheme as theme } from '../../../styles/theme';
 import { mountWithTheme } from '../../../jest';
 
 test('should render all book info', () => {
